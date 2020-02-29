@@ -1,0 +1,3 @@
+rootProject.name = 'jazapp-java'
+
+include ":app"
