@@ -5,21 +5,37 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
 >
+
+<h:head>
+    <h:outputStylesheet name="main.css" library="css" />
+    <h:outputStylesheet name="bootstrap.min.css" library="css" />
+</h:head>
+
 <h:body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <h:form>
+                <h:inputText id="login" styleClass="fadeIn mt-5" a:placeholder="Login" value="#{loginRequest.username}">
+                    <f:validator validatorId="usernameAndPasswordValidator" />
+                </h:inputText>
+                <h:message styleClass="error text-danger" for="login" />
 
-    <h:form styleClass="form-base">
-        <div class="form-group">
-            <h:inputText id="username" styleClass="form-control" a:placeholder="Username" value="#{loginRequest.username}" />
+                <h:inputSecret id="password" styleClass="fadeIn" a:placeholder="Password" value="#{loginRequest.password}">
+                    <f:validator validatorId="usernameAndPasswordValidator" />
+                </h:inputSecret>
+                <h:message styleClass="error text-danger" for="login" />
+
+                <h:outputText styleClass="alert alert-danger d-inline-block" rendered="#{flash.containsKey('error-wrong-username-or-password')}" value="#{flash['error-wrong-username-or-password']}" />
+
+                <div id="formFooter" class="mt-5">
+                    <h:commandButton styleClass="fadeIn third" value="login" action="#{loginController.login(loginRequest)}"/><br/>
+                    <h:outputLink styleClass="underlineHover" value="register.xhtml">Sign up</h:outputLink>
+                </div>
+
+            </h:form>
         </div>
-        <div class="form-group">
-            <h:inputText id="password" styleClass="form-control" a:placeholder="Password" value="#{loginRequest.password}" />
-        </div>
-
-        <h:commandButton styleClass="btn btn-primary" value="login" action="#{loginController.login(loginRequest)}"/><br/>
-        <h:outputLink styleClass="small" value="register.xhtml">Sign up</h:outputLink>
-
-    </h:form>
-
+    </div>
 </h:body>
 </html>

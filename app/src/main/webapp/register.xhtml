@@ -5,19 +5,59 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
 >
+
+<h:head>
+    <h:outputStylesheet name="main.css" library="css" />
+    <h:outputStylesheet name="bootstrap.min.css" library="css" />
+</h:head>
+
 <h:body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <h:form>
+                <h:inputText id="username" styleClass="fadeIn mt-5" a:placeholder="Username" value="#{registerRequest.username}">
+                    <f:validator validatorId="usernameValidator" />
+                </h:inputText>
+                <h:message styleClass="error text-danger" for="username" />
 
-    <h:form styleClass="form-base">
-        <div class="form-group">
-            <h:inputText id="username" styleClass="form-control" a:placeholder="Username" value="#{registerRequest.username}" />
+                <h:outputText styleClass="alert alert-danger d-inline-block" rendered="#{flash.containsKey('error-user-is-taken')}" value="#{flash['error-user-is-taken']}" />
+
+                <h:inputText id="email" styleClass="fadeIn" a:placeholder="Email" value="#{registerRequest.email}" />
+
+                <h:inputText id="first-name" styleClass="fadeIn" a:placeholder="First name" value="#{registerRequest.firstName}">
+                    <f:validator validatorId="firstNameValidator" />
+                </h:inputText>
+                <h:message styleClass="error text-danger" for="first-name" />
+
+                <h:inputText id="last-name" styleClass="fadeIn" a:placeholder="Last name" value="#{registerRequest.lastName}">
+                    <f:validator validatorId="lastNameValidator" />
+                </h:inputText>
+                <h:message styleClass="error text-danger" for="last-name" />
+
+                <h:inputText id="birthday" styleClass="fadeIn" a:placeholder="Birthday" value="#{registerRequest.birthday}">
+                    <f:validator validatorId="dateValidator" />
+                </h:inputText>
+                <h:message styleClass="error text-danger" for="birthday" />
+
+                <h:inputSecret id="password" styleClass="fadeIn" a:placeholder="Password" value="#{registerRequest.password}">
+                    <f:validator validatorId="passwordValidator" />
+                </h:inputSecret>
+                <h:message styleClass="error text-danger" for="password" />
+
+                <h:inputSecret id="password-check" styleClass="fadeIn" a:placeholder="Password check" value="#{registerRequest.passwordCheck}">
+                    <f:validator validatorId="passwordValidator" />
+                </h:inputSecret>
+                <h:message styleClass="error text-danger" for="password-check" />
+
+                <h:outputText styleClass="alert alert-danger d-inline-block" rendered="#{flash.containsKey('error-passwords-do-not-match')}" value="#{flash['error-passwords-do-not-match']}" />
+
+                <div id="formFooter" class="mt-5">
+                    <h:commandButton styleClass="btn btn-primary mt-5" value="Register" action="#{registerController.register(registerRequest)}"/><br/>
+                </div>
+            </h:form>
         </div>
-        <div class="form-group">
-            <h:inputText id="password" styleClass="form-control" a:placeholder="Password" value="#{registerRequest.password}" />
-        </div>
-
-        <h:commandButton styleClass="btn btn-primary" value="Register" action="#{registerController.register(registerRequest)}"/><br/>
-    </h:form>
-
+    </div>
 </h:body>
 </html>
