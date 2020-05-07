@@ -1,10 +1,8 @@
 package pl.jazapp.app;
 
-import javax.enterprise.context.ApplicationScoped;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-@ApplicationScoped
 public class Users {
     private static Map<String, User> users = new ConcurrentHashMap<>();
 
