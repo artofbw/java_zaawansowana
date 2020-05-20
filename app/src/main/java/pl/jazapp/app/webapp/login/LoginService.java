@@ -9,19 +9,22 @@ import javax.servlet.http.HttpServletRequest;
 @ApplicationScoped
 public class LoginService {
     @Inject
+    private Users users;
+    @Inject
     private HttpServletRequest request;
 
     private static boolean isLogged;
 
     public boolean logIn(String username, String password) {
-        if(Users.isUsernameAndPasswordCorrect(username, password)) {
-            var user = Users.getUser(username);
+        try {
+            var user = users.getUser(username, password);
             var session = request.getSession();
             session.setAttribute("username", user.getUsername());
             setLogged(true);
-        } else {
+        } catch (NullPointerException e) {
             setLogged(false);
         }
+
         return isLogged();
     }
 

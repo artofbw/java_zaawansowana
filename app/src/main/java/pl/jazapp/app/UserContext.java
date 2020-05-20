@@ -10,14 +10,15 @@ import java.io.Serializable;
 @SessionScoped
 public class UserContext implements Serializable {
     @Inject
+    private Users users;
+    @Inject
     private HttpServletRequest request;
 
     private static final Long serialVersionUid = 1L;
 
-    public String getFullName() {
+        public String getFullName() {
         var username = request.getSession().getAttribute("username");;
-        var user = Users.getUser(username.toString());
-
-        return user.getFullName();
+        var user = users.getFullName(username.toString());
+        return user;
     }
 }

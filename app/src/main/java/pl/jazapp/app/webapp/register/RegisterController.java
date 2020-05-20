@@ -1,18 +1,25 @@
 package pl.jazapp.app.webapp.register;
 
 import pl.jazapp.app.User;
+import pl.jazapp.app.UserCreatorService;
 import pl.jazapp.app.Users;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
 @RequestScoped
 public class RegisterController {
+    @Inject
+    private UserCreatorService userCreator;
+    @Inject
+    private Users users;
+
     public String register(RegisterRequest registerRequest) {
         var username = registerRequest.getUsername();
-        var userExists = Users.userExists(username);
+        var userExists = users.userExists(username);
         var password = registerRequest.getPassword();
         var passwordCheck = registerRequest.getPasswordCheck();
 
@@ -30,7 +37,8 @@ public class RegisterController {
             return "/register.xhtml";
         }
 
-        Users.addUser(username, new User(registerRequest));
+        // add user to database
+        userCreator.createUser(username, new User(registerRequest));
         return "login.xhtml?faces-redirect=true";
     }
 }

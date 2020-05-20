@@ -2,12 +2,32 @@ package pl.jazapp.app;
 
 import pl.jazapp.app.webapp.register.RegisterRequest;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "birthday")
     private String birthday;
+
+    @Column(name = "password")
     private String password;
 
     public User(RegisterRequest registerRequest) {
@@ -17,6 +37,14 @@ public class User {
         this.lastName = registerRequest.getLastName();
         this.birthday = registerRequest.getBirthday();
         this.password = registerRequest.getPassword();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -81,5 +109,11 @@ public class User {
 
     public String getFullName() {
         return String.format("%s %s", this.getFirstName(), this.getLastName());
+    }
+
+    public User() {}
+
+    public User(String username) {
+        this.username = username;
     }
 }

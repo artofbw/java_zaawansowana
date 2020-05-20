@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20200518_init
+      author: Lukasz Cwiklinski
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: 20200518_init.sql
+  - changeSet:
+      id: 20200519_user_fields
+      author: Lukasz Cwiklinski
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: 20200519_user_fields.sql
