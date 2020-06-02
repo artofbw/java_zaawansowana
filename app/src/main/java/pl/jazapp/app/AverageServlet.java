@@ -37,10 +37,10 @@ public class AverageServlet extends HttpServlet {
             BigDecimal bdAverage = BigDecimal.valueOf(average.getAsDouble());
             BigDecimal result = bdAverage.setScale(2, RoundingMode.HALF_UP).stripTrailingZeros();
 
-            writer.println("I got: " + result);
+            writer.println("Average equals: " + result);
         }
         catch (NullPointerException | NumberFormatException e) {
-            writer.println("Please put parameters");
+            writer.println("Please put parameters.");
         }
     }
 }
