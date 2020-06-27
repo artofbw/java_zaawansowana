@@ -25,32 +25,18 @@
                 <h:inputTextarea id="descrption" a:placeholder="Description" value="#{editAuctionController.editAuctionRequest.description}" required="true" />
             </div>
 
-<!--            <div class="form-group">-->
-<!--                <h:inputTextarea id="photo-link-1" a:placeholder="Photo link" value="#{editAuctionController.editAuctionRequest.photoList[0].url}" required="true" />-->
-<!--            </div>-->
+            <div class="form-group">
+                <h:inputTextarea id="photo-link-1" a:placeholder="Photo link" value="#{editAuctionController.editAuctionRequest.photoLink1}" />
+            </div>
 
-<!--            <div class="form-group">-->
-<!--                <h:inputTextarea id="photo-link-2" a:placeholder="Photo link" value="#{editAuctionController.editAuctionRequest.photoList[1].url}" required="true" />-->
-<!--            </div>-->
+            <div class="form-group">
+                <h:inputTextarea id="photo-link-2" a:placeholder="Photo link" value="#{editAuctionController.editAuctionRequest.photoLink2}" />
+            </div>
 
-<!--            <div class="form-group">-->
-<!--                <h:inputTextarea id="photo-link-3" a:placeholder="Photo link" value="#{editAuctionController.editAuctionRequest.photoList[2].url}" required="true" />-->
-<!--            </div>-->
+            <div class="form-group">
+                <h:inputTextarea id="photo-link-3" a:placeholder="Photo link" value="#{editAuctionController.editAuctionRequest.photoLink3}" />
+            </div>
 
-<!--            <div class="form-group">-->
-<!--                <h:message for="photos" />-->
-
-<!--                <h:dataTable id="photos" styleClass="table" value="#{editAuctionController.editAuctionRequest.photoList}" var="photo">-->
-<!--                    <h:column>-->
-<!--                        <h:inputHidden value="#{photo.id}" />-->
-<!--                    </h:column>-->
-<!--                    <h:column>-->
-<!--                        <f:facet name="photo-link-#{photo.id}" />-->
-<!--                        <h:inputText value="#{photo.url}" />-->
-<!--                    </h:column>-->
-<!--                </h:dataTable>-->
-
-<!--            </div>-->
             <div class="form-group">
                 <h:inputText converterMessage="Please enter digits only." id="price" a:placeholder="Price" value="#{editAuctionController.editAuctionRequest.price}" required="true" />
             </div>

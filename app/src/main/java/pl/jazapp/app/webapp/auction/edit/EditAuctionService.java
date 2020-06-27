@@ -2,7 +2,6 @@ package pl.jazapp.app.webapp.auction.edit;
 
 import pl.jazapp.app.webapp.auction.Auction;
 import pl.jazapp.app.webapp.category.Category;
-import pl.jazapp.app.webapp.user.User;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
@@ -22,6 +21,13 @@ public class EditAuctionService {
         } else {
             em.merge(auction);
         }
+        auction.getAuctionPhotoList().forEach(photo -> {
+            if(photo.getId() == null) {
+                em.persist(photo);
+            } else {
+                em.merge(photo);
+            }
+        });
     }
 
     public Auction getAuctionById(Long auctionId) {

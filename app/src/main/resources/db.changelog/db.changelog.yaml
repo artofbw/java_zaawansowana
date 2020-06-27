@@ -27,4 +27,10 @@ databaseChangeLog:
         relativeToChangelogFile: true
         splitStatements: false
         path: 20200625_is_admin.sql
-
+  - changeSet:
+      id: 20200627_drop_uniques
+      author: Lukasz Cwiklinski
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: 20200627_drop_uniques.sql

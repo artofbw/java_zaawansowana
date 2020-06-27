@@ -20,7 +20,6 @@
                 <th scope="col">Title</th>
                 <th scope="col">Price</th>
                 <th scope="col">Photo</th>
-                <th scope="col">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -29,7 +28,6 @@
                     <td id="title-#{auction.id}">#{auction.title}</td>
                     <td id="price-#{auction.id}"> #{auction.price}</td>
                     <td id="photo-#{auction.id}"><h:graphicImage id="photo-#{auction.id}" value="#{auction.auctionPhotoList[0].url}" height="64" /></td>
-                    <td>Edit</td>
                 </tr>
             </ui:repeat>
             </tbody>

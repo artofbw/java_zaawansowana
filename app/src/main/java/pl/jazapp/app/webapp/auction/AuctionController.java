@@ -1,6 +1,7 @@
 package pl.jazapp.app.webapp.auction;
 
 import pl.jazapp.app.webapp.user.UserContext;
+import pl.jazapp.app.webapp.user.Users;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -14,13 +15,15 @@ public class AuctionController {
     AuctionRepository auctionRepository;
     @Inject
     private UserContext userContext;
+    @Inject
+    Users users;
 
     public List<Auction> getAuctionList() {
         return auctionRepository.fetchAll();
     }
 
     public List<Auction> getAuctionListByUserId() {
-        var user = userContext.getUser().get();
+        var user = users.getUserEntity(userContext.getUser());
         return auctionRepository.fetchAllByUserId(user);
     }
 }

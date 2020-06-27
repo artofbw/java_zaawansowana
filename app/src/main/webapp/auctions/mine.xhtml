@@ -29,7 +29,12 @@
                     <td id="title-#{auction.id}">#{auction.title}</td>
                     <td id="price-#{auction.id}"> #{auction.price}</td>
                     <td id="photo-#{auction.id}"><h:graphicImage id="photo-#{auction.id}" value="#{auction.auctionPhotoList[0].url}" height="64" /></td>
-                    <td>Edit</td>
+                    <td>
+                        <h:link id="edit-#{auction.id}" outcome="edit">
+                            <f:param name="auctionId" value="#{auction.id}" />
+                            <h:outputText value="Edit" />
+                        </h:link>
+                    </td>
                 </tr>
             </ui:repeat>
             </tbody>

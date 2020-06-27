@@ -5,7 +5,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
-import java.util.Optional;
 
 @Named
 @SessionScoped
@@ -23,13 +22,11 @@ public class UserContext implements Serializable {
         return fullName;
     }
 
-    public Optional<User> getUser() {
-        var username = request.getSession().getAttribute("username");;
-        var user = users.getUserEntity(username.toString());
-        return Optional.ofNullable(user);
+    public String getUser() {
+        return request.getSession().getAttribute("username").toString();
     }
 
     public boolean isAdmin() {
-        return getUser().get().isAdmin();
+        return users.getUserEntity(getUser()).isAdmin();
     }
 }

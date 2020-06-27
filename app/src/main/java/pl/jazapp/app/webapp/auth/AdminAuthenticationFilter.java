@@ -1,6 +1,7 @@
 package pl.jazapp.app.webapp.auth;
 
 import pl.jazapp.app.webapp.user.UserContext;
+import pl.jazapp.app.webapp.user.Users;
 
 import javax.inject.Inject;
 import javax.servlet.FilterChain;
@@ -16,9 +17,12 @@ public class AdminAuthenticationFilter extends HttpFilter {
     @Inject
     UserContext userContext;
 
+    @Inject
+    Users users;
+
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
-        if(userContext.getUser().get() != null && userContext.isAdmin()) {
+        if(users.getUserEntity(userContext.getUser()) != null && userContext.isAdmin()) {
             chain.doFilter(req, res);
         } else {
             res.sendRedirect(req.getContextPath() + "/");
