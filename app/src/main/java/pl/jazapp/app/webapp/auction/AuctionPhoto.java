@@ -17,6 +17,9 @@ public class AuctionPhoto {
     @Column(name = "url")
     private String url;
 
+    @Column(name = "order")
+    private Integer order;
+
     public AuctionPhoto() {}
 
     public AuctionPhoto(Long id, Auction auction, String url) {

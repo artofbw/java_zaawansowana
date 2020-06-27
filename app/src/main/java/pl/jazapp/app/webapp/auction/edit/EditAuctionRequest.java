@@ -18,6 +18,9 @@ public class EditAuctionRequest {
     private int version;
     private Long createdBy;
     private Long categoryId;
+    private String photo1Link;
+    private String photo2Link;
+    private String photo3Link;
     private List<AuctionPhoto> photoList;
 
     public EditAuctionRequest(Auction auction) {
@@ -32,6 +35,30 @@ public class EditAuctionRequest {
     }
 
     public EditAuctionRequest() {}
+
+    public String getPhoto1Link() {
+        return photo1Link;
+    }
+
+    public void setPhoto1Link(String photo1Link) {
+        this.photo1Link = photo1Link;
+    }
+
+    public String getPhoto2Link() {
+        return photo2Link;
+    }
+
+    public void setPhoto2Link(String photo2Link) {
+        this.photo2Link = photo2Link;
+    }
+
+    public String getPhoto3Link() {
+        return photo3Link;
+    }
+
+    public void setPhoto3Link(String photo3Link) {
+        this.photo3Link = photo3Link;
+    }
 
     public Long getId() {
         return id;

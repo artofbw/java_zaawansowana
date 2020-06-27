@@ -44,6 +44,7 @@ public class Auction {
         cascade = {CascadeType.MERGE, CascadeType.REMOVE},
         orphanRemoval = true
     )
+    @OrderColumn(name = "order")
     private List<AuctionPhoto> auctionPhotoList;
 
     public Long getId() {

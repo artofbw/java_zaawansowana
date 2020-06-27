@@ -1,11 +1,13 @@
 package pl.jazapp.app.webapp.auction.edit;
 
 import pl.jazapp.app.ParameterRetriever;
+import pl.jazapp.app.webapp.auction.AuctionPhoto;
 import pl.jazapp.app.webapp.user.UserContext;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.LinkedList;
 
 @Named
 @RequestScoped
@@ -40,6 +42,14 @@ public class EditAuctionController {
         var auction = editAuctionRequest.toAuctionEntity();
         auction.setCategoryId(category);
         auction.setCreatedBy(createdBy);
+
+        var auctionPhotos = new LinkedList<AuctionPhoto>();
+        var order = 0L;
+        if (editAuctionRequest.getPhoto1Link() != null) {
+            auctionPhotos.add(new AuctionPhoto(null, auction, editAuctionRequest.getPhoto1Link())); // order
+            order++;
+        }
+
         editAuctionService.saveAuction(auction);
         return "/auctions/mine.xhtml?faces-redirect=true";
     }
