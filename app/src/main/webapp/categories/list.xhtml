@@ -17,21 +17,21 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Price</th>
-                <th scope="col">Photo</th>
-                <th scope="col">Action</th>
+                <th scope="col">Name</th>
             </tr>
             </thead>
             <tbody>
-            <ui:repeat value="#{auctionController.auctionList}" var="auction">
+            <ui:repeat value="#{categoryController.categoryList}" var="category">
                 <tr>
-                    <td id="title-#{auction.id}">#{auction.title}</td>
-                    <td id="price-#{auction.id}"> #{auction.price}</td>
-                    <td id="photo-#{auction.id}"><h:graphicImage id="photo-#{auction.id}" value="#{auction.auctionPhotoList[0].url}" height="64" /></td>
-                    <td>Edit</td>
+                    <td id="name-#{category.id}">
+                        <h:link outcome="edit">
+                            <f:param name="categoryId" value="#{category.id}" />
+                            <h:outputText value="#{category.name} - #{category.department.name}" />
+                        </h:link>
+                    </td>
                 </tr>
             </ui:repeat>
+
             </tbody>
         </table>
     </div>

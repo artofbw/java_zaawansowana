@@ -1,6 +1,6 @@
 package pl.jazapp.app.webapp.login;
 
-import pl.jazapp.app.Users;
+import pl.jazapp.app.webapp.user.Users;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -13,26 +13,13 @@ public class LoginService {
     @Inject
     private HttpServletRequest request;
 
-    private static boolean isLogged;
-
     public boolean logIn(String username, String password) {
-        try {
-            var user = users.getUser(username, password);
+        var user = users.getUser(username, password);
+        if (user != null) {
             var session = request.getSession();
             session.setAttribute("username", user.getUsername());
-            setLogged(true);
-        } catch (NullPointerException e) {
-            setLogged(false);
+            return true;
         }
-
-        return isLogged();
-    }
-
-    public static boolean isLogged() {
-        return isLogged;
-    }
-
-    public static void setLogged(boolean logged) {
-        isLogged = logged;
+        return false;
     }
 }

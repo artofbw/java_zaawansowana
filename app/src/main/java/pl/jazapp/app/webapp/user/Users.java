@@ -1,4 +1,4 @@
-package pl.jazapp.app;
+package pl.jazapp.app.webapp.user;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,7 +17,7 @@ public class Users {
 
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    private User getUserEntity(String username) {
+    public User getUserEntity(String username) {
         var emManager = em.getEntityManagerFactory().createEntityManager();
         TypedQuery<User> query = emManager.createQuery("SELECT u FROM User u WHERE u.username = ?1", User.class);
         query.setParameter(1, username);
@@ -34,18 +34,16 @@ public class Users {
     }
 
     public String getFullName(String username) {
-        try {
-            User user = getUserEntity(username);
+        User user = getUserEntity(username);
+        if(user != null) {
             return user.getFullName();
-        } catch (NoResultException e) {
-            return null;
         }
+        return null;
     }
 
     public User getUser(String username, String password) {
         try {
             var user = getUserEntity(username);
-
             if(isUsernameAndPasswordCorrect(password, user.getPassword())) {
                 return user;
             }

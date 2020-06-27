@@ -1,4 +1,4 @@
-package pl.jazapp.app;
+package pl.jazapp.app.webapp.user;
 
 import pl.jazapp.app.webapp.register.RegisterRequest;
 
@@ -30,6 +30,9 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "role")
+    private String role;
+
     public User(RegisterRequest registerRequest) {
         this.username = registerRequest.getUsername();
         this.email = registerRequest.getEmail();
@@ -37,6 +40,7 @@ public class User {
         this.lastName = registerRequest.getLastName();
         this.birthday = registerRequest.getBirthday();
         this.password = registerRequest.getPassword();
+        this.role = "DEFAULT";
     }
 
     public Long getId() {
@@ -115,5 +119,17 @@ public class User {
 
     public User(String username) {
         this.username = username;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public boolean isAdmin() {
+        return role.toUpperCase().equals("ADMIN");
     }
 }

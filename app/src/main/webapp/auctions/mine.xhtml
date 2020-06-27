@@ -24,7 +24,7 @@
             </tr>
             </thead>
             <tbody>
-            <ui:repeat value="#{auctionController.auctionList}" var="auction">
+            <ui:repeat value="#{auctionController.auctionListByUserId}" var="auction">
                 <tr>
                     <td id="title-#{auction.id}">#{auction.title}</td>
                     <td id="price-#{auction.id}"> #{auction.price}</td>

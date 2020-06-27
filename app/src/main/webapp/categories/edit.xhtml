@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+
+<h:head>
+    <h:outputStylesheet name="main.css" library="css" />
+    <h:outputStylesheet name="bootstrap.min.css" library="css" />
+</h:head>
+
+<h:body>
+    <div>
+        <h:form>
+            <h:messages showDetail="false" />
+            <div class="form-group">
+                <h:message for="name" />
+                <h:inputText id="name" a:placeholder="Category" value="#{editCategoryController.editCategoryRequest.name}" required="true" />
+            </div>
+
+            <div class="form-group">
+                <h:selectOneMenu id="department" value="#{editCategoryController.editCategoryRequest.departmentId}">
+                    <f:selectItems value="#{departmentController.departmentList}" var="department" itemDescription="departmentId" itemLabel="#{department.name}" itemValue="#{department.id}"/>
+                </h:selectOneMenu>
+            </div>
+
+            <div class="form-group">
+
+            </div>
+            <h:inputHidden id="id" value="#{editCategoryController.editCategoryRequest.id}" />
+            <h:commandButton id="save" styleClass="btn btn-primary" value="Save" action="#{editCategoryController.save()}" />
+        </h:form>
+    </div>
+</h:body>
+</html>

@@ -1,4 +1,4 @@
-package pl.jazapp.app;
+package pl.jazapp.app.webapp.login;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

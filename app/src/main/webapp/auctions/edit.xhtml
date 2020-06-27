@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+
+<h:head>
+    <h:outputStylesheet name="main.css" library="css" />
+    <h:outputStylesheet name="bootstrap.min.css" library="css" />
+</h:head>
+
+<h:body>
+    <div>
+        <h:form>
+            <h:messages showDetail="false" />
+            <div class="form-group">
+                <h:inputText id="title" a:placeholder="Title" value="#{editAuctionController.editAuctionRequest.title}" required="true" />
+            </div>
+
+            <div class="form-group">
+                <h:inputTextarea id="descrption" a:placeholder="Description" value="#{editAuctionController.editAuctionRequest.description}" required="true" />
+            </div>
+
+<!--            <div class="form-group">-->
+<!--                <h:inputTextarea id="photo-link-1" a:placeholder="Photo link" value="#{editAuctionController.editAuctionRequest.photoList[0].url}" required="true" />-->
+<!--            </div>-->
+
+<!--            <div class="form-group">-->
+<!--                <h:inputTextarea id="photo-link-2" a:placeholder="Photo link" value="#{editAuctionController.editAuctionRequest.photoList[1].url}" required="true" />-->
+<!--            </div>-->
+
+<!--            <div class="form-group">-->
+<!--                <h:inputTextarea id="photo-link-3" a:placeholder="Photo link" value="#{editAuctionController.editAuctionRequest.photoList[2].url}" required="true" />-->
+<!--            </div>-->
+
+<!--            <div class="form-group">-->
+<!--                <h:message for="photos" />-->
+
+<!--                <h:dataTable id="photos" styleClass="table" value="#{editAuctionController.editAuctionRequest.photoList}" var="photo">-->
+<!--                    <h:column>-->
+<!--                        <h:inputHidden value="#{photo.id}" />-->
+<!--                    </h:column>-->
+<!--                    <h:column>-->
+<!--                        <f:facet name="photo-link-#{photo.id}" />-->
+<!--                        <h:inputText value="#{photo.url}" />-->
+<!--                    </h:column>-->
+<!--                </h:dataTable>-->
+
+<!--            </div>-->
+            <div class="form-group">
+                <h:inputText converterMessage="Please enter digits only." id="price" a:placeholder="Price" value="#{editAuctionController.editAuctionRequest.price}" required="true" />
+            </div>
+
+            <div class="form-group">
+                <h:selectOneMenu id="category" value="#{editAuctionController.editAuctionRequest.categoryId}">
+                    <f:selectItems value="#{categoryController.categoryList}" var="category" itemLabel="#{category.name}" itemValue="#{category.id}"/>
+                </h:selectOneMenu>
+            </div>
+            <h:inputHidden id="id" value="#{editAuctionController.editAuctionRequest.id}" />
+            <h:commandButton id="save" styleClass="btn btn-primary" value="Save" action="#{editAuctionController.save()}" />
+        </h:form>
+    </div>
+</h:body>
+</html>

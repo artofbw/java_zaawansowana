@@ -13,3 +13,18 @@ databaseChangeLog:
         relativeToChangelogFile: true
         splitStatements: false
         path: 20200519_user_fields.sql
+  - changeSet:
+      id: 20200624_auction
+      author: Lukasz Cwiklinski
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: 20200624_auction.sql
+  - changeSet:
+      id: 20200625_is_admin
+      author: Lukasz Cwiklinski
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: 20200625_is_admin.sql
+
