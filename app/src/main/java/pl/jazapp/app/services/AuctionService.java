@@ -1,4 +1,4 @@
-package pl.jazapp.app.webapp.auction.edit;
+package pl.jazapp.app.services;
 
 import pl.jazapp.app.webapp.auction.Auction;
 import pl.jazapp.app.webapp.category.Category;
@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 import java.util.Optional;
 
 @ApplicationScoped
-public class EditAuctionService {
+public class AuctionService {
     @PersistenceContext
     EntityManager em;
 

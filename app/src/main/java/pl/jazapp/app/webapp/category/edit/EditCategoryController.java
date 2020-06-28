@@ -1,7 +1,8 @@
 package pl.jazapp.app.webapp.category.edit;
 
 import pl.jazapp.app.ParameterRetriever;
-import pl.jazapp.app.webapp.department.DepartmentService;
+import pl.jazapp.app.services.CategoryService;
+import pl.jazapp.app.services.DepartmentService;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -13,7 +14,7 @@ public class EditCategoryController {
     private EditCategoryRequest editCategoryRequest;
 
     @Inject
-    EditCategoryService editCategoryService;
+    CategoryService categoryService;
 
     @Inject
     DepartmentService departmentService;
@@ -25,7 +26,7 @@ public class EditCategoryController {
         if(editCategoryRequest == null) {
             if (parameterRetriever.contains("categoryId")) {
                 var categoryId = parameterRetriever.getParameterAsLong("categoryId");
-                var categoryEntity = editCategoryService.getCategoryById(categoryId);
+                var categoryEntity = categoryService.getCategoryById(categoryId);
                 editCategoryRequest = new EditCategoryRequest(categoryEntity);
             } else {
                 editCategoryRequest = new EditCategoryRequest();
@@ -35,10 +36,10 @@ public class EditCategoryController {
     }
 
     public String save() {
-        var section = departmentService.getDepartmentById(editCategoryRequest.getDepartmentId()).get();
+        var section = departmentService.getDepartmentById(editCategoryRequest.getDepartmentId());
         var category = editCategoryRequest.toCategoryEntity();
         category.setDepartment(section);
-        editCategoryService.saveCategory(category);
+        categoryService.saveCategory(category);
         return "/categories/list.xhtml?faces-redirect=true";
     }
 }

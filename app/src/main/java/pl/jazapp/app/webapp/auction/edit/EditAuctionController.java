@@ -1,6 +1,7 @@
 package pl.jazapp.app.webapp.auction.edit;
 
 import pl.jazapp.app.ParameterRetriever;
+import pl.jazapp.app.services.AuctionService;
 import pl.jazapp.app.webapp.auction.AuctionPhoto;
 import pl.jazapp.app.repository.AuctionRepository;
 import pl.jazapp.app.webapp.user.UserContext;
@@ -20,7 +21,7 @@ public class EditAuctionController {
     UserContext userContext;
 
     @Inject
-    EditAuctionService editAuctionService;
+    AuctionService auctionService;
 
     @Inject
     ParameterRetriever parameterRetriever;
@@ -41,7 +42,7 @@ public class EditAuctionController {
         if(editAuctionRequest == null) {
             if(parameterRetriever.contains("auctionId")) {
                 var auctionId = parameterRetriever.getParameterAsLong("auctionId");
-                var auctionEntity = editAuctionService.getAuctionById(auctionId);
+                var auctionEntity = auctionService.getAuctionById(auctionId);
                 editAuctionRequest = new EditAuctionRequest(auctionEntity);
 
                 var photoList = auctionEntity.getAuctionPhotoList();
@@ -68,7 +69,7 @@ public class EditAuctionController {
     }
 
     public String save() {
-        var category = editAuctionService.getCategoryById(editAuctionRequest.getCategoryId()).get();
+        var category = auctionService.getCategoryById(editAuctionRequest.getCategoryId()).get();
         var createdBy = users.getUserEntity(userContext.getUser());
         var auction = editAuctionRequest.toAuctionEntity();
         auction.setCategoryId(category);
@@ -90,7 +91,7 @@ public class EditAuctionController {
         }
         auction.setAuctionPhotoList(auctionPhotos);
 
-        editAuctionService.saveAuction(auction);
+        auctionService.saveAuction(auction);
         return "/auctions/mine.xhtml?faces-redirect=true";
     }
 }

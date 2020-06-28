@@ -1,7 +1,7 @@
 package pl.jazapp.app.webapp.register;
 
 import pl.jazapp.app.webapp.user.User;
-import pl.jazapp.app.webapp.user.UserCreatorService;
+import pl.jazapp.app.services.UserCreatorService;
 import pl.jazapp.app.webapp.user.Users;
 
 import javax.enterprise.context.RequestScoped;

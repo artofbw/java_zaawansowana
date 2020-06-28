@@ -1,4 +1,4 @@
-package pl.jazapp.app.webapp.department.edit;
+package pl.jazapp.app.services;
 
 import pl.jazapp.app.webapp.department.Department;
 
@@ -6,9 +6,10 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @ApplicationScoped
-public class EditDepartmentService {
+public class DepartmentService {
     @PersistenceContext
     EntityManager em;
 
@@ -20,8 +21,7 @@ public class EditDepartmentService {
             em.merge(department);
         }
     }
-
-    public Department getDepartmentById(Long departmentId) {
-        return em.find(Department.class, departmentId);
+    public Department getDepartmentById(Long id) {
+        return em.find(Department.class, id);
     }
 }

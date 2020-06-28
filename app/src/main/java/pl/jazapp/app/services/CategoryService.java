@@ -1,4 +1,4 @@
-package pl.jazapp.app.webapp.category.edit;
+package pl.jazapp.app.services;
 
 import pl.jazapp.app.webapp.category.Category;
 
@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 @ApplicationScoped
-public class EditCategoryService {
+public class CategoryService {
     @PersistenceContext
     EntityManager em;
 

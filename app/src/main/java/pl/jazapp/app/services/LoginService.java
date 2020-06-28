@@ -1,4 +1,4 @@
-package pl.jazapp.app.webapp.login;
+package pl.jazapp.app.services;
 
 import pl.jazapp.app.webapp.user.Users;
 

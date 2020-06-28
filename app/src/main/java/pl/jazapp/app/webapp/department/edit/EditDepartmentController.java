@@ -1,6 +1,7 @@
 package pl.jazapp.app.webapp.department.edit;
 
 import pl.jazapp.app.ParameterRetriever;
+import pl.jazapp.app.services.DepartmentService;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -12,7 +13,7 @@ public class EditDepartmentController {
     private EditDepartmentRequest editDepartmentRequest;
 
     @Inject
-    EditDepartmentService editDepartmentService;
+    DepartmentService departmentService;
 
     @Inject
     ParameterRetriever parameterRetriever;
@@ -21,7 +22,7 @@ public class EditDepartmentController {
         if(editDepartmentRequest == null) {
             if(parameterRetriever.contains("departmentId")) {
                 var departmentId = parameterRetriever.getParameterAsLong("departmentId");
-                var departmentEntity = editDepartmentService.getDepartmentById(departmentId);
+                var departmentEntity = departmentService.getDepartmentById(departmentId);
                 editDepartmentRequest = new EditDepartmentRequest(departmentEntity);
             } else {
                 editDepartmentRequest = new EditDepartmentRequest();
@@ -31,7 +32,7 @@ public class EditDepartmentController {
     }
 
     public String save() {
-        editDepartmentService.saveDepartment(editDepartmentRequest.toDepartmentEntity());
+        departmentService.saveDepartment(editDepartmentRequest.toDepartmentEntity());
         return "/departments/list.xhtml?faces-redirect=true";
     }
 }

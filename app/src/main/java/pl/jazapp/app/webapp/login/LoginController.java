@@ -1,5 +1,7 @@
 package pl.jazapp.app.webapp.login;
 
+import pl.jazapp.app.services.LoginService;
+
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
