@@ -1,5 +1,6 @@
-package pl.jazapp.app.webapp.category;
+package pl.jazapp.app.repository;
 
+import pl.jazapp.app.webapp.category.Category;
 import pl.jazapp.app.webapp.department.Department;
 
 import javax.enterprise.context.ApplicationScoped;

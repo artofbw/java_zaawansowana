@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/departments/edit.xhtml", "/categories/exit.xhtml"})
+@WebFilter(urlPatterns = {"/departments/edit.xhtml", "/categories/edit.xhtml"})
 public class AdminAuthenticationFilter extends HttpFilter {
     @Inject
     UserContext userContext;

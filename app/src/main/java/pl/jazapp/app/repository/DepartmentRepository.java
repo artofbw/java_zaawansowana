@@ -1,6 +1,7 @@
-package pl.jazapp.app.webapp.department;
+package pl.jazapp.app.repository;
 
 import pl.jazapp.app.webapp.auction.Auction;
+import pl.jazapp.app.webapp.department.Department;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;

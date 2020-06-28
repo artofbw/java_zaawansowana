@@ -1,5 +1,6 @@
-package pl.jazapp.app.webapp.auction;
+package pl.jazapp.app.repository;
 
+import pl.jazapp.app.webapp.auction.Auction;
 import pl.jazapp.app.webapp.user.User;
 
 import javax.enterprise.context.ApplicationScoped;

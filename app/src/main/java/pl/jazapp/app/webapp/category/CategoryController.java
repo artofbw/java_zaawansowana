@@ -1,5 +1,7 @@
 package pl.jazapp.app.webapp.category;
 
+import pl.jazapp.app.repository.CategoryRepository;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;

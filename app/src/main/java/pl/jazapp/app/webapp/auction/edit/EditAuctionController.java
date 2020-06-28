@@ -2,7 +2,7 @@ package pl.jazapp.app.webapp.auction.edit;
 
 import pl.jazapp.app.ParameterRetriever;
 import pl.jazapp.app.webapp.auction.AuctionPhoto;
-import pl.jazapp.app.webapp.auction.AuctionRepository;
+import pl.jazapp.app.repository.AuctionRepository;
 import pl.jazapp.app.webapp.user.UserContext;
 import pl.jazapp.app.webapp.user.Users;
 

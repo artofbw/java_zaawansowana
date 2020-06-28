@@ -1,5 +1,6 @@
 package pl.jazapp.app.webapp.auction;
 
+import pl.jazapp.app.repository.AuctionRepository;
 import pl.jazapp.app.webapp.user.UserContext;
 import pl.jazapp.app.webapp.user.Users;
 
